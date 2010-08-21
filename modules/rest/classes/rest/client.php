@@ -198,7 +198,7 @@ class REST_Client {
 		$this->last_uri = $uri;
 
 		// Return an instance of REST_Response with the collected data
-		return new REST_Response($status, $data);
+		return new REST_Response($data, $status);
 	}
 
 	/**
