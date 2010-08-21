@@ -214,7 +214,7 @@ class REST_Client {
 		$uri = $this->_config['host'];
 
 		// Make sure that there is a slash at the end of the host string
-		$uri .= substr($uri, -1) !== '/' ? '/' : '';
+		$uri .= (substr($uri, -1) !== '/') ? '/' : '';
 
 		// Attach the location
 		$uri .= $location;
