@@ -103,7 +103,7 @@ class REST_Client {
 	 *
 	 * @param   string  the location that we are requesting
 	 * @param   array   an array of key value pairs to transform into parameters
-	 * @return  object  a Rest_Response object
+	 * @return  object  a REST_Response object
 	 */
 	public function get($location = NULL, $parameters = NULL)
 	{
@@ -116,7 +116,7 @@ class REST_Client {
 	 *
 	 * @param   string  the location that we are requesting
 	 * @param   mixed   an array of key value pairs to transform into parameters or a simple string to send as the body
-	 * @return  object  a Rest_Response object
+	 * @return  object  a REST_Response object
 	 */
 	public function put($location = NULL, $parameters = NULL)
 	{
@@ -129,7 +129,7 @@ class REST_Client {
 	 *
 	 * @param   string  the location that we are requesting
 	 * @param   mixed   an array of key value pairs to transform into parameters or a simple string to send as the body
-	 * @return  object  a Rest_Response object
+	 * @return  object  a REST_Response object
 	 */
 	public function post($location = NULL, $parameters = NULL)
 	{
@@ -142,7 +142,7 @@ class REST_Client {
 	 *
 	 * @param   string  the location that we are requesting
 	 * @param   mixed   an array of key value pairs to transform into parameters or a simple string to send as the body
-	 * @return  object  a Rest_Response object
+	 * @return  object  a REST_Response object
 	 */
 	public function delete($location = NULL, $parameters = NULL)
 	{
@@ -156,7 +156,7 @@ class REST_Client {
 	 * @param   string  the method we are using to make the HTTP request
 	 * @param   string  the location that we are requesting
 	 * @param   array   an array of key value pairs to transform into parameters
-	 * @return  object  a Rest_Response object
+	 * @return  object  a REST_Response object
 	 */
 	protected function _http_request($method, $location = NULL, $parameters = NULL)
 	{
@@ -197,8 +197,8 @@ class REST_Client {
 		// Set the last uri variable
 		$this->last_uri = $uri;
 
-		// Return an instance of Rest_Response with the collected data
-		return new Rest_Response($status, $data);
+		// Return an instance of REST_Response with the collected data
+		return new REST_Response($status, $data);
 	}
 
 	/**
@@ -211,7 +211,7 @@ class REST_Client {
 	 */
 	protected function _build_uri($method, $location = NULL, $parameters = NULL)
 	{
-		$uri = $this->_config['host'];
+		$uri = $this->_config['uri'];
 
 		// Make sure that there is a slash at the end of the host string
 		$uri .= (substr($uri, -1) !== '/') ? '/' : '';
