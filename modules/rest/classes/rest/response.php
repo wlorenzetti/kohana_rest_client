@@ -9,7 +9,7 @@
  * @copyright  (c) 2010 Neuroxy
  * @license    FIXME
  */
-class REST_Result {	
+class REST_Response {	
 
 	/**
 	 * @var  string  the raw response returned by the HTTP request
