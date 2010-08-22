@@ -127,7 +127,7 @@ class REST_Client {
 	{
 		// Get the requested document and return it
 		return $this->_http_request(self::HTTP_PUT, $location, $parameters,
-			array('Content-Type' => $this->_config['content_type']));
+			array('Content-type' => $this->_config['content_type']));
 	}
 
 	/**
@@ -141,7 +141,7 @@ class REST_Client {
 	{
 		// Get the requested document and return it
 		return $this->_http_request(self::HTTP_POST, $location, $parameters,
-			array('Content-Type' => $this->_config['content_type']));
+			array('Content-type' => $this->_config['content_type']));
 	}
 
 	/**
