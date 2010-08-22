@@ -69,6 +69,11 @@ class REST_Client {
 	const HTTP_DELETE = 'DELETE';
 
 	/**
+	 * Constants for known HTTP statuses
+	 */
+	const HTTP_OK = 200;
+
+	/**
 	 * @var  object  the last uri that was requested
 	 */
 	public $last_uri;
