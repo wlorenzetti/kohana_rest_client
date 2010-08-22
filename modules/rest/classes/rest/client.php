@@ -72,6 +72,8 @@ class REST_Client {
 	 * Constants for known HTTP statuses
 	 */
 	const HTTP_OK = 200;
+	const HTTP_CREATED = 201;
+	const HTTP_ACCEPTED = 202;
 
 	/**
 	 * @var  object  the last uri that was requested
