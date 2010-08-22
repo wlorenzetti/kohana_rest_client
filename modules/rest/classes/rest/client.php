@@ -126,7 +126,8 @@ class REST_Client {
 	public function put($location = NULL, $parameters = NULL)
 	{
 		// Get the requested document and return it
-		return $this->_http_request(self::HTTP_PUT, $location, $parameters);
+		return $this->_http_request(self::HTTP_PUT, $location, $parameters,
+			array('Content-Type' => $this->_config['content_type']));
 	}
 
 	/**
@@ -139,7 +140,8 @@ class REST_Client {
 	public function post($location = NULL, $parameters = NULL)
 	{
 		// Get the requested document and return it
-		return $this->_http_request(self::HTTP_POST, $location, $parameters);
+		return $this->_http_request(self::HTTP_POST, $location, $parameters,
+			array('Content-Type' => $this->_config['content_type']));
 	}
 
 	/**
