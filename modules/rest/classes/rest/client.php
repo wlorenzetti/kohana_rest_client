@@ -161,9 +161,10 @@ class REST_Client {
 	 * @param   string  the method we are using to make the HTTP request
 	 * @param   string  the location that we are requesting
 	 * @param   array   an array of key value pairs to transform into parameters
+	 * @param   array   an array of key value pairs to transform into headers
 	 * @return  object  a REST_Response object
 	 */
-	protected function _http_request($method, $location = NULL, $parameters = NULL)
+	protected function _http_request($method, $location = NULL, $parameters = NULL, $headers = NULL)
 	{
 		// Determine what the final URI for this request should be
 		$uri = $this->_build_uri($method, $location, $parameters);
@@ -194,6 +195,20 @@ class REST_Client {
 
 		// Make sure that we get data back when we call exec
 		curl_setopt($curl_request, CURLOPT_RETURNTRANSFER, TRUE);
+
+		// If we have headers that we need to send up with the request
+		if ($headers !== NULL)
+		{
+			// Loop over the headers that were passed in
+			foreach ($headers as $key => $value)
+			{
+				// Collapse the key => value pair into one line
+				$simple_headers[] = $key.': '.$value;
+			}
+
+			// Set the headers we want to send up
+			curl_setopt($curl_request, CURLOPT_HTTPHEADERS, $simple_headers);
+		}
 
 		// Run the request, get the status, close the request
 		$data = curl_exec($curl_request);
