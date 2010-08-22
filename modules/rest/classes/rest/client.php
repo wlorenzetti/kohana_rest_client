@@ -127,7 +127,7 @@ class REST_Client {
 	{
 		// Get the requested document and return it
 		return $this->_http_request(self::HTTP_PUT, $location, $parameters,
-			array('Content-type' => $this->_config['content_type']));
+			array('Content-Type' => $this->_config['content_type']));
 	}
 
 	/**
@@ -141,7 +141,7 @@ class REST_Client {
 	{
 		// Get the requested document and return it
 		return $this->_http_request(self::HTTP_POST, $location, $parameters,
-			array('Content-type' => $this->_config['content_type']));
+			array('Content-Type' => $this->_config['content_type']));
 	}
 
 	/**
@@ -177,12 +177,6 @@ class REST_Client {
 		// No matter what type of request this is we always need the URI
 		curl_setopt($curl_request, CURLOPT_URL, $uri);
 
-		// If this is a DELETE or PUT request
-		if ($method === self::HTTP_DELETE OR $method === self::HTTP_PUT) {
-			// Set the custom request option
-			curl_setopt($curl_request, CURLOPT_CUSTOMREQUEST, $method);
-		}
-
 		// If this a POST request
 		if ($method === self::HTTP_POST) {
 			// Set this request up as a POST request
@@ -193,6 +187,12 @@ class REST_Client {
 		if ($method === self::HTTP_PUT OR $method === self::HTTP_POST) {
 			// Set the post fields
 			curl_setopt($curl_request, CURLOPT_POSTFIELDS, $parameters);
+		}
+
+		// If this is a DELETE or PUT request
+		if ($method === self::HTTP_DELETE OR $method === self::HTTP_PUT) {
+			// Set the custom request option
+			curl_setopt($curl_request, CURLOPT_CUSTOMREQUEST, $method);
 		}
 
 		// Make sure that we get data back when we call exec
