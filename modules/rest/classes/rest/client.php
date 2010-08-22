@@ -209,7 +209,7 @@ class REST_Client {
 			}
 
 			// Set the headers we want to send up
-			curl_setopt($curl_request, CURLOPT_HTTPHEADERS, $simple_headers);
+			curl_setopt($curl_request, CURLOPT_HTTPHEADER, $simple_headers);
 		}
 
 		// Run the request, get the status, close the request
