@@ -1,14 +1,13 @@
 <?php defined('SYSPATH') or die('No direct script access.');
-
 /**
  * Manages communication with REST services through a simple object abstraction
  * API. Instances of this class are referenced by name.
  *
- * @package    Kohana/REST
+ * @package    Kohana/REST Client
  * @category   Extension
- * @author     Neuroxy
- * @copyright  (c) 2010 Neuroxy
- * @license    FIXME
+ * @author     Kohana Team
+ * @copyright  (c) 2011 Kohana Team
+ * @license    http://kohanaphp.com/license
  */
 class REST_Client {	
 
@@ -47,8 +46,21 @@ class REST_Client {
 
 		if ( ! isset(self::$instances[$name]))
 		{
-			if ($config === NULL)
-			{
+            // If a configuration array was passed in
+            if (is_array($config)) {
+                // Define a default set of configuration options
+                $defaults = array(
+                    'uri' => 'api.local',
+                    'content_type' => 'application/json'
+                );
+
+                // Overlay the passed configuration information on top of the
+                // defaults
+                $config = array_merge($defaults, $config);
+            }
+
+            // If no configuration options were passed in
+			if ($config === NULL) {
 				// Load the configuration for this client
 				$config = Kohana::config('rest')->$name;
 			}
